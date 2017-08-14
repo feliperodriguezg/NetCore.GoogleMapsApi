@@ -2,6 +2,11 @@
 
 namespace NetCore.GoogleMapsApi
 {
+    public abstract class Base
+    {
+        public string status { get; set; }
+    }
+
     #region Geocode
     public class AddressComponent
     {
@@ -50,10 +55,9 @@ namespace NetCore.GoogleMapsApi
         public List<string> types { get; set; }
     }
 
-    public class RootObject
+    public class RootObject: Base
     {
         public List<Result> results { get; set; }
-        public string status { get; set; }
     }
     #endregion
 
@@ -70,11 +74,10 @@ namespace NetCore.GoogleMapsApi
         public int value { get; set; }
     }
 
-    public class Element
+    public class Element: Base
     {
         public Distance distance { get; set; }
         public Duration duration { get; set; }
-        public string status { get; set; }
     }
 
     public class Row
@@ -82,12 +85,11 @@ namespace NetCore.GoogleMapsApi
         public List<Element> elements { get; set; }
     }
 
-    public class RootObjectDistanceMatrix
+    public class RootObjectDistanceMatrix: Base
     {
         public List<string> destination_addresses { get; set; }
         public List<string> origin_addresses { get; set; }
         public List<Row> rows { get; set; }
-        public string status { get; set; }
     }
     #endregion
 }

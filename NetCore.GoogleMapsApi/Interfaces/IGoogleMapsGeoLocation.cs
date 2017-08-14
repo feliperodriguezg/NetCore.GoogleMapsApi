@@ -1,8 +1,10 @@
-﻿namespace NetCore.GoogleMapsApi.Interfaces
+﻿using NetCore.GoogleMapsApi.Entity;
+
+namespace NetCore.GoogleMapsApi.Interfaces
 {
     public interface IGoogleMapsGeoLocation
     {
-        RootObject Geocoding(string address);
-        RootObject Geocoding(string latitude, string longitude);
+        GoogleMapsServiceResponse<RootObject> Geocoding(string address);
+        GoogleMapsServiceResponse<RootObject> Geocoding(string latitude, string longitude);
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace NetCore.GoogleMapsApi.Interfaces
+﻿using NetCore.GoogleMapsApi.Entity;
+
+namespace NetCore.GoogleMapsApi.Interfaces
 {
     public interface IGoogleMapsDistanceMatrix
     {
-        RootObjectDistanceMatrix GetDistance(string origin, string destination, string mode);
+        GoogleMapsServiceResponse<RootObjectDistanceMatrix> GetDistance(string origin, string destination, string mode);
     }
 }

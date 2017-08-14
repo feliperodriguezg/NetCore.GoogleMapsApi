@@ -1,4 +1,6 @@
-﻿namespace NetCore.GoogleMapsApi
+﻿using System;
+
+namespace NetCore.GoogleMapsApi
 {
     public sealed class GoogleMapsApiSettings
     {
@@ -7,6 +9,8 @@
         public string UrlRootApi { get; set; }
         public GoogleMapsApiSettings(string apiKey)
         {
+            if (string.IsNullOrEmpty(apiKey))
+                throw new ArgumentNullException("apiKey");
             ApiKey = apiKey;
             UrlRootApi = DefaultUrlRootApi;
         }
