@@ -18,28 +18,5 @@ namespace NetCore.GoogleMapsApi.Tests
         {
             return File.ReadAllText("googlemaps_api_key.txt").Trim();
         }
-
-        private void CheckStatus(RootObject response, string status)
-        {
-            Assert.IsNotNull(response);
-            Assert.IsTrue(!String.IsNullOrEmpty(response.status));
-            Assert.IsTrue(response.status == status, "status: " + response.status);
-
-        }
-
-        protected virtual void StatusRequestDenied(RootObject response)
-        {
-            CheckStatus(response, "REQUEST_DENIED");
-        }
-
-        protected virtual void StatusZeroResults(RootObject response)
-        {
-            CheckStatus(response, "ZERO_RESULTS");
-        }
-
-        protected virtual void StatusOk(RootObject response)
-        {
-            CheckStatus(response, "OK");
-        }
     }
 }

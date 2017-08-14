@@ -40,7 +40,6 @@ namespace NetCore.GoogleMapsApi.Tests
         public void Geocoding_ByAddress()
         {
             var response = Geocoding("Manhattan, Nueva York 10036, EE. UU.", GoogleMapsResponseStatus.OK);
-            StatusOk(response);
             Assert.IsTrue(response.results.Count > 0, "Results is empty or null");
         }
 
@@ -49,21 +48,18 @@ namespace NetCore.GoogleMapsApi.Tests
         {
             _services = new GoogleMapsApiService(new GoogleMapsApiSettings("apiinvalid_324324234324324"));
             var response = Geocoding("Manhattan, Nueva York 10036, EE. UU.", GoogleMapsResponseStatus.REQUEST_DENIED);
-            base.StatusRequestDenied(response);
         }
 
         [TestMethod]
         public void Geocoding_ByAddress_False_Address()
         {
-            var response = Geocoding("MeloInventoTó, Marth", GoogleMapsResponseStatus.ZERO_RESULTS);
-            StatusZeroResults(response);
+            var response = Geocoding("MeloInventoTï¿½, Marth", GoogleMapsResponseStatus.ZERO_RESULTS);
         }
 
         [TestMethod]
         public void Geocoding_ByCoordinates()
         {
             var response = Geocoding(Latitude, Longitude, GoogleMapsResponseStatus.OK);
-            StatusOk(response);
             Assert.IsTrue(response.results.Count > 0, "Results is empty or null");
         }
 
@@ -71,7 +67,6 @@ namespace NetCore.GoogleMapsApi.Tests
         public void Geocoding_ByCoordinates_False_Coordinates()
         {
             var response = Geocoding("0.00223232", "-1.23233344445", GoogleMapsResponseStatus.ZERO_RESULTS);
-            StatusZeroResults(response);
         }
 
         [TestMethod]
